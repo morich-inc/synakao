@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中尾小百合 様｜morich キャリアご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #E60012;
+    --red-light: #fff0f0;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-500: #6b7280;
+    --gray-600: #4b5563;
+    --gray-700: #374151;
+    --gray-900: #111827;
+    --blue-50: #eff6ff;
+    --blue-100: #dbeafe;
+    --blue-600: #2563eb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: #f5f5f5; color: var(--gray-900); line-height: 1.75; }
+  header { background: #fff; border-bottom: 3px solid var(--red); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  header img { height: 38px; }
+  header .htxt p:first-child { font-size: 12px; color: var(--gray-500); }
+  header .htxt p:last-child { font-size: 17px; font-weight: 900; }
+  .nav-bar { background: var(--gray-900); padding: 0 12px; overflow-x: auto; white-space: nowrap; }
+  .nav-bar a { display: inline-block; padding: 13px 18px; color: #ccc; text-decoration: none; font-size: 12px; font-weight: 700; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  .nav-bar a:hover { color: #fff; border-bottom-color: var(--red); }
+  main { max-width: 860px; margin: 0 auto; padding: 28px 14px 64px; }
+  .card { background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 40px; overflow: hidden; border-top: 5px solid var(--red); }
+  .card-inner { padding: 28px 28px 36px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 12px; border-radius: 999px; border: 2px solid var(--red); color: var(--red); background: var(--red-light); }
+  .badge-blue { border-color: var(--blue-600); color: var(--blue-600); background: var(--blue-50); }
+  .co-name { font-size: clamp(22px, 5vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 5px; }
+  .co-url { font-size: 12px; margin-bottom: 22px; }
+  .co-url a { color: var(--blue-600); text-decoration: none; }
+  .co-url a:hover { text-decoration: underline; }
+  .overview { background: var(--blue-50); border: 1px solid var(--blue-100); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .overview h3 { font-size: 10px; font-weight: 700; color: var(--blue-600); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .overview table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .overview tr { border-bottom: 1px solid var(--blue-100); }
+  .overview tr:last-child { border-bottom: none; }
+  .overview th { text-align: left; padding: 6px 14px 6px 0; color: var(--gray-600); font-weight: 700; width: 100px; vertical-align: top; white-space: nowrap; }
+  .overview td { padding: 6px 0; color: var(--gray-700); }
+  .highlight { background: var(--red-light); border: 2px solid var(--red); border-radius: 8px; padding: 16px 20px; margin-bottom: 22px; }
+  .highlight h3 { font-size: 13px; font-weight: 900; color: var(--red); margin-bottom: 8px; }
+  .highlight p, .highlight li { font-size: 13px; color: #7a0000; margin-bottom: 4px; }
+  .highlight ul { padding-left: 16px; }
+  .accordion { margin-bottom: 16px; }
+  .acc-header { display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; padding: 12px 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; user-select: none; transition: background 0.15s; }
+  .acc-header:hover { background: var(--gray-100); }
+  .acc-header .label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--red); border-left: 3px solid var(--red); padding-left: 8px; margin-bottom: 5px; display: block; }
+  .acc-preview { font-size: 12px; color: var(--gray-500); line-height: 1.6; }
+  .acc-header-left { flex: 1; }
+  .acc-icon { width: 28px; height: 28px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: var(--gray-200); font-size: 13px; transition: transform 0.25s, background 0.2s; }
+  .acc-header.open .acc-icon { transform: rotate(180deg); background: var(--red); color: #fff; }
+  .acc-header.open { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom-color: transparent; }
+  .acc-body { display: none; padding: 20px 18px; border: 1px solid var(--gray-200); border-top: none; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .acc-body.open { display: block; }
+  .acc-body p { margin-bottom: 10px; }
+  .acc-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .acc-body li { margin-bottom: 6px; }
+  .job-wrap { border: 1px solid var(--gray-200); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  .job-header { background: var(--gray-900); color: #fff; padding: 14px 18px; display: flex; align-items: flex-start; justify-content: space-between; cursor: pointer; user-select: none; }
+  .job-title-text { font-size: 14px; font-weight: 900; margin-bottom: 3px; }
+  .job-preview { font-size: 11px; color: #aaa; line-height: 1.5; }
+  .job-icon { width: 26px; height: 26px; flex-shrink: 0; margin-left: 12px; margin-top: 2px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.15); font-size: 12px; transition: transform 0.25s; }
+  .job-header.open .job-icon { transform: rotate(180deg); }
+  .job-body { display: none; padding: 20px 18px; font-size: 13px; color: var(--gray-700); line-height: 1.85; }
+  .job-body.open { display: block; }
+  .job-body p { margin-bottom: 10px; }
+  .job-body ul { padding-left: 18px; margin-bottom: 10px; }
+  .job-body li { margin-bottom: 6px; }
+  .job-section { font-size: 11px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .06em; margin: 14px 0 6px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-right: 5px; margin-bottom: 8px; }
+  .tag-must { background: var(--red); color: #fff; }
+  .tag-want { background: var(--gray-600); color: #fff; }
+  .meta-pills { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+  .pill { font-size: 12px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: var(--gray-100); color: var(--gray-700); border: 1px solid var(--gray-200); }
+  .section-label { font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; border-left: 3px solid var(--red); padding-left: 8px; margin: 22px 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lbtn { display: inline-flex; align-items: center; gap: 5px; padding: 7px 14px; border-radius: 6px; background: var(--gray-900); color: #fff; font-size: 12px; font-weight: 700; text-decoration: none; transition: background 0.2s; }
+  .lbtn:hover { background: var(--red); }
+  .lbtn-out { background: transparent; color: var(--gray-900); border: 2px solid var(--gray-200); }
+  .lbtn-out:hover { background: var(--gray-900); color: #fff; border-color: var(--gray-900); }
+  footer { text-align: center; padding: 28px 16px; font-size: 11px; color: var(--gray-500); border-top: 1px solid var(--gray-200); background: #fff; }
+  @media(max-width:600px){ .card-inner{ padding: 18px 14px 24px; } .overview th { width: 80px; } }
+</style>
+</head>
+<body>
+<header>
+  <img src="morich_logo.jpg" alt="morich">
+  <div class="htxt">
+    <p>morich キャリアご提案資料</p>
+    <p>中尾小百合 様</p>
+  </div>
+</header>
+<nav class="nav-bar">
+  <a href="#k1">1. ドクターズ株式会社</a>
+</nav>
+<main>
+
+<div class="card" id="k1"><div class="card-inner">
+  <div class="badges"><span class="badge">事業責任者/新規事業開発</span><span class="badge badge-blue">未上場</span></div>
+  <div class="co-name">ドクターズ株式会社</div>
+  <div class="co-url"><a href="https://doctors-inc.jp/" target="_blank">https://doctors-inc.jp/</a></div>
+  <div class="overview">
+    <h3>Corporate Overview</h3>
+    <table><tr><th>本社住所</th><td>〒105-0011 東京都港区芝公園2-3-6 PMO浜松町II 5階</td></tr><tr><th>上場区分</th><td>未上場</td></tr></table>
+  </div>
+  <div class="highlight">
+    <h3>⭐ morichオススメPoint</h3>
+    <ul><li>IPO準備中</li><li>過去複数名入社実績アリ</li></ul>
+  </div>
+  <div class="accordion">
+    <div class="acc-header" onclick="toggleAcc(this)">
+      <div class="acc-header-left">
+        <span class="label">企業紹介</span>
+        <div class="acc-preview">ドクターズ株式会社は、医療現場の知見とデジタルを掛け合わせ、医療DXの社会実装を推進するプラットフォーム企業です。2021年11月にはシリーズB資金調達を実施し、事業拡大と基盤強化を進めてきました。</div>
+      </div>
+      <div class="acc-icon">▼</div>
+    </div>
+    <div class="acc-body"><p>ドクターズ株式会社は、医療現場の知見とデジタルを掛け合わせ、医療DXの社会実装を推進するプラットフォーム企業です。2021年11月にはシリーズB資金調達を実施し、事業拡大と基盤強化を進めてきました。約40万人の医療従事者、約7.5万施設の医療機関、700名超のエキスパート医師ネットワークを基盤に、事業開発支援「Doctors Hub®」、医療DX・デジタルヘルス総合支援「Doctors Next®」、医療・ヘルスケアAIプラットフォーム「Doctors Station® AI」などを展開。</p><p>国内にとどまらず、さらに直近では米国クリニックを含む実証環境を活用したグローバル展開も進んでおり、日本発で医療DXの社会実装を広げるフェーズに入っています。単なる海外進出ではなく、日本で培った医療DXの仕組みを海外のリアルな医療現場で磨き込み、将来的な横展開につなげていく構想です。加えて、B2B OEM事業、B2Cオンラインサービス、医療機関Roll up＆DX支援、Global Careサービスなど、Healthcare OSを軸に複数事業を展開しています。</p><p>世界のデジタルヘルス市場は今後200兆円規模へ拡大が見込まれ、日本においても少子高齢化で従来産業が縮小傾向にあるなか、デジタルヘルスは成長産業として注目され社会的意義と成長性を兼ね備え、日本の医療構造を本質的に変革していく挑戦に携われます。デジタル技術と医療・ヘルスケアを融合させた「デジタルヘルス」分野で、新たな&quot;医療DXインフラ&quot;を創出している企業です。</p><ul><li>東洋経済「すごいベンチャー」ランキングでトップ50に選出</li><li>企業評価額は約400億円、ヘルスケアベンチャーの中で国内トップクラス</li></ul><p><strong>主要実績・提携事例</strong></p><ul><li>LA SUITE社：「うめきた温泉 蓮」へのOEM提供。温浴×医療DXによるウェルネス体験を実現。</li><li>ビーウィズ（パソナグループ）：「SOKUSAI Lab」を共同開発。企業の健康経営を支援（2025年正式リリース）。</li><li>NTTビジネスソリューションズ：「オンラインSASクリニック」を共同開発。SAS診療をオンライン完結（2024年提供開始）。</li><li>業界大手との資本業務提携：スズケン（医療機関DX支援）／みずほFG（医療DXファイナンス）／キヤノンITS（医療画像共同開発）</li></ul><p><strong>代表取締役 兼 CEO　柳川 貴雄氏</strong></p><p>2007年信州大学医学部医学科卒業。2009年信州大学付属病院にて初期研修過程終了。脳神経外科専門医・指導医資格取得。これまでに2500例以上の脳外科手術を執刀。2016年に一般社団法人IoMT学会を立ち上げ、理事就任。IoTと医療の連携の普及に努める。2018年7月からは、株式会社ZAIKENを創業。超小型遠隔連続心電図デバイスを用いた遠隔IoT連続心電図検査サービス「医心電診」を運営。2019年10月にドクターズ株式会社の事業を開始し、400名以上の専門医を中心とした日本初のシステムである、医療専門家クラウドソーシング事業を立ち上げ、超少子高齢化新時代に向けた医療のIT/IoT化を推し進めている。</p><p><strong>柳川社長の想い</strong></p><p>長野県で10年以上、脳神経外科医として2,500件超の臨床を経験する中、地域医療の厳しい現場に直面。医師の都市部流出と高齢化による担い手不足を体感したことが起業の原点。医療依存だけでは社会保障が持続困難との認識から、テクノロジーを用いたヘルスケア・ウェルネス・予病まで含む仕組みで「健康寿命を伸ばす」ことを目標に掲げられています。地域医療課題の解決には50億・100億では不十分で、1000億～1兆円規模の大きな資金を動かす必要性があります。時価総額を高め、株価上昇を通じた早期の大型調達で指数関数的な成長を志向されています。</p><p><strong>独自の事業モデル（ヘルスケアOS＝&quot;原材料供給型&quot;インフラ）</strong></p><ul><li>医師（ドクター）を事業創出の中核に据え、「医療×デジタルの融合による事業の量産体制」を構築。</li><li>システム側の&quot;部品群&quot;：ID統合やPHR裏側統合を担う「ドクターステーションAI」等のバックエンド基盤を保有。各サービスの上物ではなく共通データ・認証・運用の土台を提供。</li></ul><p>非医療企業の「医療分野参入の新規事業創出支援（コンサルティング）」と、病院・クリニック・薬局などへの「経営・DX支援」。後者は独自性が強く、グループで医療法人格を保有し、M&Aにより33施設を直営。運用・事務局の業務改善から診療・患者管理・予約・マーケティングまで現場改善を推進し、システム開発も内製化して現場運用とプロダクトが循環する構造を作っています。直営33施設を持つことで、テクノロジーの適用が「検証—改善—展開」と循環し、成果が収益に直結しやすい。コンサルタントと開発が一体で動く内製体制により、要件定義から運用設計までの橋渡しが迅速。</p><p><strong>成長性と今後の展望</strong></p><ul><li>創業から約6年で急成長。毎年200%以上の成長を継続し、直近は売上250%成長。「通常企業の20～30%成長」に対し約12倍のスピード成長を最少人数で実現中。</li><li>売上規模は国内ヘルスケア業界で「五本の指」に入る水準に到達。</li><li>NASDAQでの上場準備を本格化。国内M&Aと海外展開を両輪化。</li></ul></div>
+  </div>
+  
+    <div class="job-wrap">
+      <div class="job-header" onclick="toggleJob(this)">
+        <div>
+          <div class="job-title-text">📋 事業責任者/新規事業開発</div>
+          <div class="job-preview">ヘルスケアOS基盤を活用した新規事業をゼロイチから一気通貫で統括</div>
+        </div>
+        <div class="job-icon">▼</div>
+      </div>
+      <div class="job-body">
+        <p><strong>業務内容</strong></p><p>新規事業（海外含む）のゼロイチ立ち上げ。事業開発、オペレーション、マーケティングまで一気通貫で統括。ヘルスケアOS基盤を活用した新規事業の企画、戦略立案、実行全般を担当。グループシナジー創出と事業拡大を牽引</p><p>株式会社ドクターズは医療×デジタルで日本の社会保障を変えようとしている急成長企業です。このポジションでは、ヘルスケアOS基盤を活用した新規事業をゼロイチから一気通貫で統括し、事業開発・戦略・実行まで全てを牽引できます。1兆円規模の事業成長を目指す中で、医療産業全体の変革に直結する経営責任を担える、滅多にないチャンスです。</p><p><strong>応募資格</strong></p><ul><li><span class='tag tag-must'>MUST</span>新規事業開発、事業立ち上げの実務経験3年以上</li><li><span class='tag tag-must'>MUST</span>事業責任者として売上目標達成経験</li><li><span class='tag tag-must'>MUST</span>外部委託業務を内製化し、事業全体を推進した経験</li><li><span class='tag tag-want'>WANT</span>スタートアップまたは急成長企業での勤務経験優遇</li><li><span class='tag tag-want'>WANT</span>ヘルスケア業界での業務経験優遇</li></ul><p><strong>求める人物像</strong></p><p>一人で事業をやりきる能力と気概を持つ方。泥臭く現場で汗をかき、「背中を見せる」リーダーシップが発揮できるプレイングマネージャー。事業を加速させる「アクセル役」としての姿勢を持つ人材</p>
+        <div class="meta-pills"><span class="pill">📍 東京</span><span class="pill">🏠 ハイブリッド勤務</span><span class="pill">❌ 副業不可</span></div>
+      </div>
+    </div>
+  <div class="section-label">外部リンク</div>
+  <div class="links"><a class="lbtn" href="https://doctors-inc.jp/" target="_blank">🏢 企業サイト</a></div>
+</div></div>
+</main>
+<footer>
+  <p>本資料はmorichが中尾小百合 様のためにご用意した個人情報を含む機密資料です。無断転用・転載はご遠慮ください。</p>
+  <p style="margin-top:6px;">© 株式会社morich</p>
+</footer>
+<script>
+  function toggleAcc(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+  function toggleJob(header) {
+    const body = header.nextElementSibling;
+    header.classList.toggle('open');
+    body.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
